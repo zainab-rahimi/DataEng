@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import datetime
 import numpy as np 
 
+
 #initialization 
 
 url ='https://web.archive.org/web/20230902185326/https://en.wikipedia.org/wiki/List_of_countries_by_GDP_%28nominal%29'
@@ -47,25 +48,36 @@ def transform(df):
     format to float value, transforms the information of GDP froml
     USD (Millions) to USD (Billions) rounding to 2 decimal places.
     The function returns the transformed dataframe.'''
+    gdp_list = df["GDP_USD_millions"].tolist()
+    gdp_list = [float("".join(x.split(','))) for x in gdp_list]
+    gdp_list =[np.round(x/1000,2) for x in gdp_list]
+    df["GDP_USD_millions"] = gdp_list
+    df=df.rename(columns = {"GDP_USD_millions":"GDP_USD_billions"})
     
     return df
 
 def load_to_csv(df, csv_path):
     ''' This function saves the final dataframe as a `CSV` file 
     in the provided path. Function returns nothing.'''
+    df.to_csv(csv_path)
 
 def load_to_db(df, sql_connection, table_name):
     ''' This function saves the final dataframe as a database table
     with the provided name. Function returns nothing.'''
+    df.to_sql(table_name,sql_connection, if_existe='replace', index =False)
 
 def run_query(query_statement, sql_connection):
     ''' This function runs the stated query on the database table and
     prints the output on the terminal. Function returns nothing. '''
-
+    print(query_statement)
+    query_output = pd.read_sql(query_statement, sql_connection)
+    print(query_output)
+    
 def log_progress(message):
     ''' This function logs the mentioned message at a given stage of the code execution to a log file. Function returns nothing'''
 
 ''' Here, you define the required entities and call the relevant 
 functions in the correct order to complete the project. Note that this
 portion is not inside any function.'''
-extract(url, table_attribs)
+df = extract(url, table_attribs)
+transform(df)
