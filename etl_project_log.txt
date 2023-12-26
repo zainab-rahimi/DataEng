@@ -1,0 +1,18 @@
+2023-Dec-26-11:23:16 : extract process finished
+2023-Dec-26-11:23:16 : Transform process to start
+2023-Dec-26-11:23:16 : Load to csv started
+2023-Dec-26-11:27:45 : extract process finished
+2023-Dec-26-11:27:45 : Transform process to start
+2023-Dec-26-11:27:45 : Load to csv started
+2023-Dec-26-11:27:45 : Load to database started
+2023-Dec-26-11:28:10 : extract process finished
+2023-Dec-26-11:28:10 : Transform process to start
+2023-Dec-26-11:28:10 : Load to csv started
+2023-Dec-26-11:28:10 : Load to database started
+2023-Dec-26-11:28:10 : Load to database finished
+2023-Dec-26-11:31:33 : extract process finished
+2023-Dec-26-11:31:33 : Transform process to start
+2023-Dec-26-11:31:33 : Load to csv started
+2023-Dec-26-11:31:33 : Load to database started
+2023-Dec-26-11:31:33 : Load to database finished
+2023-Dec-26-11:31:33 : Query run successfully
